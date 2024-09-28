@@ -9,25 +9,6 @@ body {
     background-color: #000000;
 }
 
-.container {
-    text-align: center;
-    width: 90%; /* Take up 90% of the screen width */
-    max-width: 1200px; /* Maximum width for a 1080p screen */
-    margin: 0 auto;
-}
-
-/* Adjust the textarea for more screen space */
-textarea {
-    width: 100%;
-    height: 200px; /* Increased height for 1080p */
-    font-size: 24px; /* Larger text size */
-    padding: 15px;
-    margin-bottom: 30px; /* Larger gap between textarea and keyboard */
-    border-radius: 8px;
-    border: 2px solid #ccc;
-    box-sizing: border-box;
-}
-
 /* Keyboard layout */
 .keyboard {
     display: inline-block;
@@ -47,25 +28,60 @@ textarea {
     padding: 20px 30px; /* Larger padding for bigger keys */
     margin: 10px; /* More space between keys */
     cursor: pointer;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    background-color: #e6e6e6;
-    transition: background-color 0.3s;
+    position: relative;
+    border: none;
+    z-index: 0;
     text-align: center;
     width: 80px; /* Increased width for the keys */
+    border-radius: 12px;
 }
 
-/* Hover effect for keys */
-.key:hover {
-    background-color: #d0d0d0;
-    box-shadow: 2px 2px 22px 2px rgba(0, 100, 255, 0.8); 
+.key:before {
+    content: '';
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    position: absolute; /* dunnot what it does*/
+    top: -8px; /*alings it behind the button */
+    left:-8px;/*alings it behind the button */
+    background-size: 400%;  /*increased background to make it appear moving*/
+    z-index: -1; /* sends it in the background so that it doesnt appear over the button*/
+    filter: blur(8px); 
+    width: calc(110% + 8px);
+    height: calc(110% + 8px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+    border-radius: 12px;
 }
 .key:active {
-    background-color: #000000;
-    box-shadow: 3px 2px 22px 1px rgba(255, 0, 0, 0.8);
-    transform: translateY(4px); 
+    color: #FFF
 }
-/* Output textarea */
+
+.key:active:after {
+    background: transparent;
+}
+.key:hover:before {
+    opacity: 1;
+}
+.key:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    left: 0;
+    top: 0;
+    border-radius: 12px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+
+
 #output {
     width: 100%;
     padding: 15px;
