@@ -1,2 +1,2 @@
 # DiscoDiscoPartyParty
-#live share code:https://prod.liveshare.vsengsaas.visualstudio.com/join?93E17B2A0027D690A074ED4481D93101CE59
+https://prod.liveshare.vsengsaas.visualstudio.com/join?8ABE9F52966648A534EB5C1A9F6F2E2F656B
