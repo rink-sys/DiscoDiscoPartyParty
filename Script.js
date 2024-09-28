@@ -1,36 +1,41 @@
-const output = document.getElementById('output');
-const keys = document.querySelectorAll('.key');
+// Load the background disco music (with gaps)
+const discoBackground = new Audio('assests/Earth, Wind & Fire - September (Official HD Video) (mp3cut.net).mp3');  // Update this path if needed
+discoBackground.loop = true;  // Set the background track to loop
+discoBackground.volume = 0.5;  // Adjust the volume
 
-// Create an AudioContext that will be reused
-const context = new (window.AudioContext || window.webkitAudioContext)();
+// Function to start background music on button click
+function startMusic() {
+    discoBackground.play();  // Start playing the background music
+}
 
-// Map keys to musical frequencies (in Hz)
-const discoNotes = {
-    'a': 261.63,  // C note
-    's': 293.66,  // D note
-    'd': 329.63,  // E note
-    'f': 349.23   // F note
+// Add an event listener for the button click
+document.getElementById('startButton').addEventListener('click', startMusic);
+
+// Define the audio files for the key sounds
+const discoSounds = {
+    'a': 'sounds/a.mp3',  // Sound for key 'a'
+    's': 'sounds/s.mp3',  // Sound for key 's'
+    'd': 'sounds/d.mp3',  // Sound for key 'd'
+    'f': 'sounds/f.mp3'   // Sound for key 'f'
 };
 
-// Function to play a sound based on the key pressed
+// Function to play the sound based on the key pressed
 function playSound(key) {
-    if (discoNotes[key]) {
-        const osc = context.createOscillator();  // Create an oscillator (sound generator)
-        osc.frequency.value = discoNotes[key];  // Set the frequency based on the key pressed
-        osc.type = 'sine';  // You can change this to 'square', 'triangle', or 'sawtooth' for different sounds
-
-        const gainNode = context.createGain();  // Create a gain node (controls volume)
-        osc.connect(gainNode);
-        gainNode.connect(context.destination);
-        gainNode.gain.setValueAtTime(0.2, context.currentTime);  // Set a lower volume for clearer sound
-
-        osc.start();  // Start the sound
-        osc.stop(context.currentTime + 0.5);  // Stop the sound after 0.5 seconds
+    if (discoSounds[key]) {
+        const audio = new Audio(discoSounds[key]);  // Create an Audio object with the appropriate MP3
+        audio.play();  // Play the sound fragment
+        showKeyPressed(key);  // Display the key pressed
     }
 }
 
-// Event listener to trigger the playSound function on key press
+// Function to display the key pressed on the screen
+function showKeyPressed(key) {
+    const keyDisplay = document.getElementById('keyDisplay');
+    keyDisplay.textContent = `Key Pressed: ${key.toUpperCase()}`;  // Update display with the key pressed
+}
+
+// Event listener to detect key presses
 document.addEventListener("keydown", function(event) {
-    const key = event.key.toLowerCase();  // Capture the pressed key
-    playSound(key);  // Call the playSound function
+    const key = event.key.toLowerCase();  // Get the pressed key and convert to lowercase
+    playSound(key);  // Call playSound function to play the corresponding sound
 });
