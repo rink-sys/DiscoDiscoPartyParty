@@ -26,23 +26,10 @@ document.addEventListener("keyup", function(event) {
 
 // Function to play a sound based on the key pressed
 function playSound(key) {
-<<<<<<< HEAD
     // Stop the current oscillator for this key if it exists
     if (activeOscillators[key]) {
         stopSound(key);
     }
-=======
-    const context = new (window.AudioContext || window.webkitAudioContext)();  // Create an AudioContext
-    const keyDiv = document.createElement('div');
-keyDiv.classList.add('key-visual');
-keyDiv.textContent = key.toUpperCase();
-document.body.appendChild(keyDiv);
-
-setTimeout(() => {
-    keyDiv.remove();
-}, 500); // Remove after 0.5 seconds
-
->>>>>>> 7cb8410d0b2c19a77625dd5e261b706806c3630f
 
     const osc = audioContext.createOscillator(); // Create an oscillator
     osc.frequency.setValueAtTime(discoNotes[key], audioContext.currentTime); // Set frequency
