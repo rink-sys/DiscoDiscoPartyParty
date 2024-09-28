@@ -17,6 +17,15 @@ const discoNotes = {
 // Function to play a sound based on the key pressed
 function playSound(key) {
     const context = new (window.AudioContext || window.webkitAudioContext)();  // Create an AudioContext
+    const keyDiv = document.createElement('div');
+keyDiv.classList.add('key-visual');
+keyDiv.textContent = key.toUpperCase();
+document.body.appendChild(keyDiv);
+
+setTimeout(() => {
+    keyDiv.remove();
+}, 500); // Remove after 0.5 seconds
+
 
     // Check if the pressed key is in our notes
     if (discoNotes[key]) {
