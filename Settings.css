@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #f4f4f9;
+    background-color: #000000;
 }
 
 .container {
@@ -58,13 +58,13 @@ textarea {
 /* Hover effect for keys */
 .key:hover {
     background-color: #d0d0d0;
+    box-shadow: 2px 2px 22px 2px rgba(0, 100, 255, 0.8); 
 }
-
-/* Spacebar styling */
-.space {
-    width: 400px; /* Larger spacebar for 1080p screen */
+.key:active {
+    background-color: #000000;
+    box-shadow: 3px 2px 22px 1px rgba(255, 0, 0, 0.8);
+    transform: translateY(4px); 
 }
-
 /* Output textarea */
 #output {
     width: 100%;
