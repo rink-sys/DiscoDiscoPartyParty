@@ -19,17 +19,14 @@
             opacity: 1;
             transition: opacity 0.15s ease-in-out;
             border-radius: 12px;
-            
         }
     
-            .rainbow-active {
-              transform: translateY(4px);
-              color: #FFF;
-                box-shadow: 0 0 10px #ffcc00;
-            }
-        </style>
-    
-    
+        .rainbow-active {
+            transform: translateY(4px);
+            color: #FFF;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+    </style>
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,6 +35,10 @@
 </head>
 <body>
   <div class="container">
+    <audio src="bg.mp3" id="music"></audio> 
+    <div class="progress_slide">
+      <div class="progress_range"></div>
+    </div>
     <div id="keyDisplay"></div>
     <div class="keyboard">
       <div class="row">
@@ -53,6 +54,7 @@
       </div>
     </div>
   </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="Script.js"></script>
 </body>
 </html>

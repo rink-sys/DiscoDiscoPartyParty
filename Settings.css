@@ -1,5 +1,6 @@
 /* General layout */
 body {
+<<<<<<< HEAD
   padding: 15px 30px; /* Padding for the button */
   font-size: 18px; /* Font size for the button text */
   cursor: pointer; /* Change cursor to pointer on hover */
@@ -8,6 +9,15 @@ body {
   color: white; /* White text */
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
+=======
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #ffffff;
+>>>>>>> 630d157a00f336a50f8df370ac3e9a812e15d205
 }
 
 /* Keyboard layout */
@@ -36,6 +46,7 @@ body {
   border-radius: 12px;
 }
 .key:before {
+<<<<<<< HEAD
   content: "";
   background: linear-gradient(
     45deg,
@@ -61,6 +72,22 @@ body {
   opacity: 0;
   transition: opacity 0.15s ease-in-out;
   border-radius: 12px;
+=======
+    content: '';
+    background: linear-gradient(45deg, #db0000, #fc770a, #fdf902, #3fde00, #00ddb8, #0226da, #5f00c5, #ba0292, #ce0101);
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(8px);
+    width: calc(110% + 8px);
+    height: calc(110% + 8px);
+    animation: RGB 20s linear infinite;
+    opacity: 0;
+    transition: opacity 0.15s ease-in-out;
+    border-radius: 12px;
+>>>>>>> 630d157a00f336a50f8df370ac3e9a812e15d205
 }
 
 .key:hover:before {
@@ -82,6 +109,7 @@ body {
 }
 
 /* Glowing animation */
+<<<<<<< HEAD
 @keyframes glowing {
   0% {
     background-position: 0 0;
@@ -92,4 +120,27 @@ body {
   100% {
     background-position: 0 0;
   }
+=======
+@keyframes RGB {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+>>>>>>> 630d157a00f336a50f8df370ac3e9a812e15d205
+}
+
+.progress_slide{
+    width:100%;
+    position:absolute;
+    top: 1px;
+    left: 1px;
+    background:rgb(0, 0, 0);
+    height:14px;
+    border-radius: 7px;
+}
+.progress_range{
+    width:0;
+    top: 100px;
+    background:rgb(13, 255, 0);
+    height: 14px;
+    border-radius: 7px;
 }
