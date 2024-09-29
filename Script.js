@@ -6,10 +6,10 @@ discoBackground.play();
 
 // Define the audio files for key sounds
 const discoSounds = {
-    'a': 'sounds/a.mp3',
-    's': 'sounds/s.mp3',
-    'd': 'sounds/d.mp3',
-    'f': 'sounds/f.mp3'
+    'a': 'assests/tom_soun.mp3',
+    's': 'assests/crisp_snare.mp3',
+    'd': 'assests/tom_soun (1).mp3',
+    'f': 'assests/osu-hit-sound.mp3'
 };
 
 // Play sound based on key press
