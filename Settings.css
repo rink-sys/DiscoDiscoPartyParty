@@ -54,7 +54,7 @@ body {
 }
 
 .key:hover:before {
-    z-index: 0;
+    z-index: -2;
     opacity: 1;
 }
 
