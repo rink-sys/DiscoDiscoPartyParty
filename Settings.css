@@ -16,6 +16,10 @@ body {
     bottom: 100px; /* Position above the keyboard */
     transition: transform 0.2s; /* Transition for the dance effect */
 }
+.dancing-character,
+.dancing-character2 {
+  font-size: 50px; /* Adjust this size as needed */
+}
 
 /* Disco lighting effect */
 .disco-light {

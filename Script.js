@@ -96,12 +96,21 @@ function triggerDiscoEffect() {
   // Add disco light effect to the body
   document.body.classList.add("disco-light");
   
-  // Dance effect for the character
+  // Dance effect for the female character
   dancer.style.transform = "translateY(-20px)"; // Move up
   setTimeout(() => {
     dancer.style.transform = "translateY(0)"; // Move back down
   }, 200);
+
+  // Delay for the male character
+  setTimeout(() => {
+    dancer2.style.transform = "translateY(20px)"; // Move down
+    setTimeout(() => {
+      dancer2.style.transform = "translateY(0)"; // Move back up
+    }, 200);
+  }, 1); // 1 millisecond delay
 }
+
 
 // Function to reset the inactivity timer
 function resetInactivityTimer() {
