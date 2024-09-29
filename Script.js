@@ -21,12 +21,18 @@ const dancer = document.getElementById("dancer");
 let inactivityTimeout;
 
 // Function to play sound based on key press
+// Function to play sound based on key press
 function playSound(key) {
-  if (discoSounds[key]) {
-    const audio = new Audio(discoSounds[key]);
-    audio.play();
+  const soundFile = discoSounds[key];
+  if (soundFile) {
+    const sound = new Audio(soundFile);
+    sound.volume = 1.0; // Set the volume to maximum (1.0)
+    sound.play().catch(err => console.log("Audio playback failed: ", err));
+  } else {
+    console.log(`No sound file for key: ${key}`);
   }
 }
+
 
 // Function to show the key pressed on the screen
 function showKeyPressed(key) {
