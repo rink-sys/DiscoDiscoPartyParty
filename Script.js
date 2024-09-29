@@ -13,13 +13,9 @@ const discoSounds = {
 
 // Get elements
 const keyDisplay = document.getElementById("keyDisplay");
-const keyHighlight = document.getElementById("keyHighlight");
-const highlightedKey = document.getElementById("highlightedKey");
+
 const dancer = document.getElementById("dancer");
 
-// Initialize score
-let score = 0;
-const scoreDisplay = document.getElementById('score');
 
 // Variable to hold the inactivity timeout
 let inactivityTimeout;
@@ -47,11 +43,7 @@ function applyRainbowEffect(onScreenKey) {
   }
 }
 
-// Function to update score
-function updateScore() {
-  score++;
-  scoreDisplay.textContent = score;
-}
+
 
 // Handle keyboard key press
 document.addEventListener("keydown", function (event) {
@@ -64,7 +56,6 @@ document.addEventListener("keydown", function (event) {
     applyRainbowEffect(onScreenKey);
     playSound(keyPressed);
     showKeyPressed(keyPressed);
-    updateScore(); // Update score
     triggerDiscoEffect(); // Trigger disco effect
     resetInactivityTimer(); // Reset inactivity timer
   }
@@ -88,7 +79,7 @@ document.querySelectorAll(".key").forEach((key) => {
     applyRainbowEffect(this);
     playSound(keyText);
     showKeyPressed(keyText);
-    updateScore(); // Update score
+    document.getElementById('music').play();
     triggerDiscoEffect(); // Trigger disco effect
     resetInactivityTimer(); // Reset inactivity timer
   });
