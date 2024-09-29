@@ -34,7 +34,7 @@ function applyRainbowEffect(onScreenKey) {
         // Remove rainbow effect after 1.5s
         setTimeout(() => {
             onScreenKey.classList.remove('rainbow-active');
-        }, 1500);
+        }, 500);
     }
 }
 
