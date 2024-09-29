@@ -1,18 +1,30 @@
-
 // Define the audio files for key sounds
 const discoSounds = {
-  a: "assests/osu-hit-sound.mp3",
-  s: "assests/osu-hit-sound.mp3",
-  d: "assests/osu-hit-sound.mp3",
-  f: "assests/osu-hit-sound.mp3",
-  g: "assests/osu-hit-sound.mp3",
-  h:"assests/osu-hit-sound.mp3",
-  j: "assests/osu-hit-sound.mp3",
-  k: "assests/osu-hit-sound.mp3",
-  l: "assests/osu-hit-sound.mp3",
+  a: "assets/A.mp3",
+  s: "assets/B.mp3",
+  d: "assets/Db.mp3",
+  f: "assets/osu-hit-sound.mp3",
+  g: "assets/single_drum_kicks (1).mp3",
+  h: "assets/single_drum_kicks.mp3",
+  j: "assets/crisp_snare.mp3",
+  k: "assets/tom_soun.mp3",
+  l: "assets/tom_soun (1).mp3",
 };
 
-// Play sound based on key press
+// Get elements
+const keyDisplay = document.getElementById("keyDisplay");
+const keyHighlight = document.getElementById("keyHighlight");
+const highlightedKey = document.getElementById("highlightedKey");
+const dancer = document.getElementById("dancer");
+
+// Initialize score
+let score = 0;
+const scoreDisplay = document.getElementById('score');
+
+// Variable to hold the inactivity timeout
+let inactivityTimeout;
+
+// Function to play sound based on key press
 function playSound(key) {
   if (discoSounds[key]) {
     const audio = new Audio(discoSounds[key]);
@@ -20,13 +32,12 @@ function playSound(key) {
   }
 }
 
-// Display the key pressed on the screen
+// Function to show the key pressed on the screen
 function showKeyPressed(key) {
-  const keyDisplay = document.getElementById("keyDisplay");
   keyDisplay.textContent = `Key Pressed: ${key.toUpperCase()}`;
 }
 
-// Apply rainbow effect
+// Function to apply rainbow effect
 function applyRainbowEffect(onScreenKey) {
   if (onScreenKey) {
     onScreenKey.classList.add("rainbow-active");
@@ -34,6 +45,12 @@ function applyRainbowEffect(onScreenKey) {
       onScreenKey.classList.remove("rainbow-active");
     }, 500);
   }
+}
+
+// Function to update score
+function updateScore() {
+  score++;
+  scoreDisplay.textContent = score;
 }
 
 // Handle keyboard key press
@@ -47,29 +64,57 @@ document.addEventListener("keydown", function (event) {
     applyRainbowEffect(onScreenKey);
     playSound(keyPressed);
     showKeyPressed(keyPressed);
+    updateScore(); // Update score
+    triggerDiscoEffect(); // Trigger disco effect
+    resetInactivityTimer(); // Reset inactivity timer
   }
 });
 
 // Handle mouse click on the on-screen keys
 document.querySelectorAll(".key").forEach((key) => {
   key.addEventListener("click", function () {
-    music.play();
     const keyText = this.textContent.trim().toLowerCase();
     applyRainbowEffect(this);
     playSound(keyText);
     showKeyPressed(keyText);
+    updateScore(); // Update score
+    triggerDiscoEffect(); // Trigger disco effect
+    resetInactivityTimer(); // Reset inactivity timer
   });
-  const button = document.getElementById("S");
-
-  // Example condition: If the button ID is 'S'
-  //   if (button.id === "S") {
-  //     button.classList.add("large-padding"); // Add class to increase padding
-  //   }
 });
 
+// Trigger disco effect
+function triggerDiscoEffect() {
+  // Add disco light effect to the body
+  document.body.classList.add("disco-light");
+  
+  // Dance effect for the character
+  dancer.style.transform = "translateY(-20px)"; // Move up
+  setTimeout(() => {
+    dancer.style.transform = "translateY(0)"; // Move back down
+  }, 200);
+}
+
+// Function to reset the inactivity timer
+function resetInactivityTimer() {
+  clearTimeout(inactivityTimeout);
+  
+  // Set the timer to remove the disco effect after 2 seconds
+  inactivityTimeout = setTimeout(() => {
+    document.body.classList.remove("disco-light");
+  }, 2000);
+}
+
+// Music progress tracking
 var music = document.getElementById('music');
 music.addEventListener('timeupdate', function() {
-    var gameprogress = music.currentTime;
-    var progressremaining = music.duration;
-    $('.progress_range').stop(true,true).animate({'width':(gameprogress +.25)/progressremaining*100+'%'},250,'linear');
+  var gameprogress = music.currentTime;
+  var progressremaining = music.duration;
+  const progressRange = document.querySelector('.progress_range');
+  
+  // Update the progress range width based on current time
+  progressRange.style.width = (gameprogress / progressremaining * 100) + '%';
 });
+
+// Start the music
+music.play();

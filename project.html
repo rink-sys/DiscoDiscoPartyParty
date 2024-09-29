@@ -1,64 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-        /* Add this class for the rainbow effect when a key is pressed */
-        .rainbow-active:before {
-            content: '';
-            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            background-size: 400%;
-            z-index: -1;
-            filter: blur(8px);
-            width: calc(110% + 8px);
-            height: calc(110% + 8px);
-            animation: glowing 2s linear infinite;
-            opacity: 1;
-            transition: opacity 0.15s ease-in-out;
-            border-radius: 12px;
-        }
-
-        .rainbow-active {
-            transform: translateY(4px);
-            color: #FFF;
-            box-shadow: 0 0 10px #ffcc00;
-        }
-
-        /* Additional styles for scoreboard */
-        .scoreboard {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .key-highlight {
-            font-size: 30px;
-            padding: 10px;
-            border: 2px solid #000;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .key-highlight.highlight {
-            background-color: yellow; /* Highlight color */
-        }
-
-        .countdown {
-            font-size: 24px;
-            margin-top: 20px;
-            color: red;
-        }
-    </style>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>On-Screen Keyboard</title>
+    <title>Disco Rhythm Game</title>
     <link rel="stylesheet" href="Settings.css" />
 </head>
 <body>
     <div class="container">
-        <audio src="bg.mp3" id="music"></audio> 
+        <audio src="bg.mp3" id="music" loop></audio>
         <div class="progress_slide">
             <div class="progress_range"></div>
         </div>
@@ -71,7 +21,10 @@
         <!-- Key Highlight -->
         <div class="key-highlight" id="keyHighlight">Press Key: <span id="highlightedKey">A</span></div>
 
+        <!-- Key Display -->
         <div id="keyDisplay"></div>
+        
+        <!-- Keyboard -->
         <div class="keyboard">
             <div class="row">
                 <button class="key">A</button>
@@ -85,68 +38,11 @@
                 <button class="key">L</button>
             </div>
         </div>
+
+        <!-- Dancing Character -->
+        <div class="dancing-character" id="dancer">💃</div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script>
-        let score = 0;
-        const scoreDisplay = document.getElementById('score');
-        const keyHighlight = document.getElementById('keyHighlight');
-        const highlightedKey = document.getElementById('highlightedKey');
-
-        // Initialize keys and the specific key to be pressed
-        let keys = ['A', 'S', 'D','F','G','H','K','L'];
-        let currentKeyIndex = 0;
-        let countdownTimer;
-
-        // Function to update the score
-        function updateScore() {
-            score++;
-            scoreDisplay.textContent = score;
-        }
-
-        // Function to highlight the specific key
-        function highlightKey() {
-            const specificKey = keys[currentKeyIndex];
-            highlightedKey.textContent = specificKey;
-            keyHighlight.classList.add('highlight');
-            startCountdown(); // Start countdown for the next key
-        }
-
-        // Function to start the countdown
-        function startCountdown() {
-            let timeLeft = 1; // 1 second countdown
-            countdownTimer = setInterval(() => {
-                timeLeft--;
-                if (timeLeft <= 0) {
-                    clearInterval(countdownTimer);
-                    currentKeyIndex = (currentKeyIndex + 1) % keys.length; // Move to next key
-                    highlightKey(); // Highlight the next key
-                }
-            }, 1000);
-        }
-
-        // Event listener for key presses
-        document.addEventListener('keydown', (event) => {
-            const specificKey = keys[currentKeyIndex];
-            if (event.key.toUpperCase() === specificKey) {
-                updateScore();
-                const keyButton = document.querySelector(`button:contains(${specificKey})`);
-                if (keyButton) {
-                    keyButton.classList.add('rainbow-active');
-                    setTimeout(() => {
-                        keyButton.classList.remove('rainbow-active');
-                    }, 500); // Duration of the effect
-                }
-                clearInterval(countdownTimer); // Stop the countdown
-                currentKeyIndex = (currentKeyIndex + 1) % keys.length; // Move to next key
-                highlightKey(); // Highlight the next key
-            }
-        });
-
-        // Initialize the game
-        highlightKey(); // Highlight the first key
-    </script>
     <script src="Script.js"></script>
 </body>
 </html>

@@ -6,7 +6,38 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #ffffff;
+    background-color: #000; /* Set background to black for better disco effect */
+}
+
+/* Dancing Character */
+.dancing-character {
+    font-size: 50px; /* Size of the dancing character */
+    position: absolute;
+    bottom: 100px; /* Position above the keyboard */
+    transition: transform 0.2s; /* Transition for the dance effect */
+}
+
+/* Disco lighting effect */
+.disco-light {
+    animation: disco 1s infinite alternate; /* Create disco light animation */
+}
+
+@keyframes disco {
+    0% {
+        background-color: rgba(255, 0, 0, 0.5);
+    }
+    25% {
+        background-color: rgba(0, 255, 0, 0.5);
+    }
+    50% {
+        background-color: rgba(0, 0, 255, 0.5);
+    }
+    75% {
+        background-color: rgba(255, 255, 0, 0.5);
+    }
+    100% {
+        background-color: rgba(255, 0, 255, 0.5);
+    }
 }
 
 /* Keyboard layout */
@@ -36,9 +67,10 @@ body {
     border-radius: 12px;
 }
 
-.key:before {
+/* Rainbow effect when a key is pressed */
+.rainbow-active:before {
     content: '';
-    background: linear-gradient(45deg, #db0000, #fc770a, #fdf902, #3fde00, #00ddb8, #0226da, #5f00c5, #ba0292, #ce0101);
+    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
     top: -8px;
     left: -8px;
@@ -47,51 +79,30 @@ body {
     filter: blur(8px);
     width: calc(110% + 8px);
     height: calc(110% + 8px);
-    animation: RGB 20s linear infinite;
-    opacity: 0;
+    animation: glowing 2s linear infinite;
+    opacity: 1;
     transition: opacity 0.15s ease-in-out;
     border-radius: 12px;
-}
-
-.key:hover:before {
-    z-index: -2;
-    opacity: 1;
-}
-
-/* Rainbow effect when a key is pressed */
-.rainbow-active:before {
-    opacity: 1; /* Make sure it's visible */
 }
 
 .rainbow-active {
     box-shadow: 0 0 10px #ffcc00;
 }
 
-/* Key active state */
-.key:active {
-    color: #FFF;
-}
-
-/* Glowing animation */
-@keyframes RGB {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
-}
-
-.progress_slide{
-    width:100%;
-    position:absolute;
+.progress_slide {
+    width: 100%;
+    position: absolute;
     top: 1px;
     left: 1px;
-    background:rgb(0, 0, 0);
-    height:14px;
+    background: rgb(0, 0, 0);
+    height: 14px;
     border-radius: 7px;
 }
-.progress_range{
-    width:0;
+
+.progress_range {
+    width: 0;
     top: 100px;
-    background:rgb(13, 255, 0);
+    background: rgb(13, 255, 0);
     height: 14px;
     border-radius: 7px;
 }
