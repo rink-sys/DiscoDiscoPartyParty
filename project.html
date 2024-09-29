@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <style>
         /* Add this class for the rainbow effect when a key is pressed */
         .rainbow-active:before {
@@ -20,41 +19,129 @@
             transition: opacity 0.15s ease-in-out;
             border-radius: 12px;
         }
-    
+
         .rainbow-active {
             transform: translateY(4px);
             color: #FFF;
             box-shadow: 0 0 10px #ffcc00;
         }
+
+        /* Additional styles for scoreboard */
+        .scoreboard {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .key-highlight {
+            font-size: 30px;
+            padding: 10px;
+            border: 2px solid #000;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .key-highlight.highlight {
+            background-color: yellow; /* Highlight color */
+        }
     </style>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>On-Screen Keyboard</title>
-  <link rel="stylesheet" href="Settings.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>On-Screen Keyboard</title>
+    <link rel="stylesheet" href="Settings.css" />
 </head>
 <body>
-  <div class="container">
-    <audio src="bg.mp3" id="music"></audio> 
-    <div class="progress_slide">
-      <div class="progress_range"></div>
+    <div class="container">
+        <audio src="bg.mp3" id="music"></audio> 
+        <div class="progress_slide">
+            <div class="progress_range"></div>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <h2>Score: <span id="score">0</span></h2>
+        </div>
+
+        <!-- Key Highlight -->
+        <div class="key-highlight" id="keyHighlight">Press Key: <span id="highlightedKey">A</span></div>
+
+        <div id="keyDisplay"></div>
+        <div class="keyboard">
+            <div class="row">
+                <button class="key">A</button>
+                <button class="key">S</button>
+                <button class="key">D</button>
+                <button class="key">F</button>
+                <button class="key">G</button>
+                <button class="key">H</button>
+                <button class="key">J</button>
+                <button class="key">K</button>
+                <button class="key">L</button>
+            </div>
+        </div>
     </div>
-    <div id="keyDisplay"></div>
-    <div class="keyboard">
-      <div class="row">
-        <button class="key">A</button>
-        <button class="key">S</button>
-        <button class="key">D</button>
-        <button class="key">F</button>
-        <button class="key">G</button>
-        <button class="key">H</button>
-        <button class="key">J</button>
-        <button class="key">K</button>
-        <button class="key">L</button>
-      </div>
-    </div>
-  </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="Script.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="Script.js"></script>
+    <script>
+      let score = 0;
+      const scoreDisplay = document.getElementById('score');
+      const keyHighlight = document.getElementById('keyHighlight');
+      const highlightedKey = document.getElementById('highlightedKey');
+  
+      // Set the initial key to be pressed
+      let specificKey = 'A';
+  
+      // Function to update the score
+      function updateScore() {
+          score++;
+          scoreDisplay.textContent = score;
+      }
+  
+      // Function to highlight the specific key
+      function highlightKey() {
+          keyHighlight.classList.add('highlight');
+          setTimeout(() => {
+              keyHighlight.classList.remove('highlight');
+          }, 1000); // Highlight for 1 second
+      }
+  
+      // Function to set a new highlighted key
+      function setHighlightedKey(newKey) {
+          specificKey = newKey;
+          highlightedKey.textContent = specificKey;
+          highlightKey();
+      }
+  
+      // Event listener for key presses
+      document.addEventListener('keydown', (event) => {
+          if (event.key.toUpperCase() === specificKey) {
+              updateScore();
+              const keyButton = document.querySelector(`button:contains(${specificKey})`);
+              if (keyButton) {
+                  keyButton.classList.add('rainbow-active');
+                  setTimeout(() => {
+                      keyButton.classList.remove('rainbow-active');
+                  }, 500); // Duration of the effect
+              }
+          }
+      });
+  
+      // Example timestamps to change highlighted keys
+      function changeKeysAtTimestamps() {
+          const timestamps = [2000, 4000, 6000]; // in milliseconds
+          const keys = ['A', 'S', 'D']; // keys to highlight at those timestamps
+          
+          timestamps.forEach((timestamp, index) => {
+              setTimeout(() => {
+                  setHighlightedKey(keys[index]);
+              }, timestamp);
+          });
+      }
+  
+      // Initialize the game
+      highlightKey();
+      changeKeysAtTimestamps(); // Call this function to start changing keys
+  </script>
 </body>
 </html>

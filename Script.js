@@ -30,8 +30,6 @@ function showKeyPressed(key) {
 function applyRainbowEffect(onScreenKey) {
   if (onScreenKey) {
     onScreenKey.classList.add("rainbow-active");
-
-    // Remove rainbow effect after 1.5s
     setTimeout(() => {
       onScreenKey.classList.remove("rainbow-active");
     }, 500);
