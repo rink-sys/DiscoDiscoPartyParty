@@ -38,7 +38,7 @@ body {
 
 .key:before {
     content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+    background: linear-gradient(45deg, #db0000, #fc770a, #fdf902, #3fde00, #00ddb8, #0226da, #5f00c5, #ba0292, #ce0101);
     position: absolute;
     top: -8px;
     left: -8px;
@@ -47,7 +47,7 @@ body {
     filter: blur(8px);
     width: calc(110% + 8px);
     height: calc(110% + 8px);
-    animation: glowing 20s linear infinite;
+    animation: RGB 20s linear infinite;
     opacity: 0;
     transition: opacity 0.15s ease-in-out;
     border-radius: 12px;
@@ -72,8 +72,19 @@ body {
 }
 
 /* Glowing animation */
-@keyframes glowing {
+@keyframes RGB {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+.progress_slide{
+    width:100%;
+    background:white;
+    height:25px;
+}
+.progress_range{
+    width:0;
+    background:rgb(13, 255, 0);
+    height:25px;
 }

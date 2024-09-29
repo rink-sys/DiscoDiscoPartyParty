@@ -1,8 +1,4 @@
-// Load background disco music immediately
-const discoBackground = new Audio('assets/bg.mp3');
-discoBackground.loop = true;
-discoBackground.volume = 0.5;
-discoBackground.play();
+
 
 // Define the audio files for key sounds
 const discoSounds = {
@@ -55,7 +51,15 @@ document.querySelectorAll('.key').forEach(key => {
     key.addEventListener('click', function () {
         const keyText = this.textContent.trim().toLowerCase();
         applyRainbowEffect(this);
+        document.getElementById('music').play();
         playSound(keyText);
         showKeyPressed(keyText);
     });
+});
+
+var music = document.getElementById('music');
+music.addEventListener('timeupdate', function() {
+    var gameprogress = music.currentTime;
+    var progressremaining = music.duration;
+    $('.progress_range').stop(true,true).animate({'width':(gameprogress +.25)/progressremaining*100+'%'},250,'linear');
 });
