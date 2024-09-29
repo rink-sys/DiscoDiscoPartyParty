@@ -6,7 +6,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 /* Keyboard layout */
@@ -83,7 +83,7 @@ body {
     position:absolute;
     top: 1px;
     left: 1px;
-    background:white;
+    background:rgb(0, 0, 0);
     height:14px;
     border-radius: 7px;
 }
