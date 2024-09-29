@@ -43,6 +43,12 @@
         .key-highlight.highlight {
             background-color: yellow; /* Highlight color */
         }
+
+        .countdown {
+            font-size: 24px;
+            margin-top: 20px;
+            color: red;
+        }
     </style>
 
     <meta charset="UTF-8" />
@@ -82,66 +88,65 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="Script.js"></script>
     <script>
-      let score = 0;
-      const scoreDisplay = document.getElementById('score');
-      const keyHighlight = document.getElementById('keyHighlight');
-      const highlightedKey = document.getElementById('highlightedKey');
-  
-      // Set the initial key to be pressed
-      let specificKey = 'A';
-  
-      // Function to update the score
-      function updateScore() {
-          score++;
-          scoreDisplay.textContent = score;
-      }
-  
-      // Function to highlight the specific key
-      function highlightKey() {
-          keyHighlight.classList.add('highlight');
-          setTimeout(() => {
-              keyHighlight.classList.remove('highlight');
-          }, 1000); // Highlight for 1 second
-      }
-  
-      // Function to set a new highlighted key
-      function setHighlightedKey(newKey) {
-          specificKey = newKey;
-          highlightedKey.textContent = specificKey;
-          highlightKey();
-      }
-  
-      // Event listener for key presses
-      document.addEventListener('keydown', (event) => {
-          if (event.key.toUpperCase() === specificKey) {
-              updateScore();
-              const keyButton = document.querySelector(`button:contains(${specificKey})`);
-              if (keyButton) {
-                  keyButton.classList.add('rainbow-active');
-                  setTimeout(() => {
-                      keyButton.classList.remove('rainbow-active');
-                  }, 500); // Duration of the effect
-              }
-          }
-      });
-  
-      // Example timestamps to change highlighted keys
-      function changeKeysAtTimestamps() {
-          const timestamps = [7888, 9888, 11888,22888,22888,22888,23000,38999,53999]; // in milliseconds
-          const keys = ['K', 'F', 'F','A','B','D','L','L','L']; // keys to highlight at those timestamps
-          
-          timestamps.forEach((timestamp, index) => {
-              setTimeout(() => {
-                  setHighlightedKey(keys[index]);
-              }, timestamp);
-          });
-      }
-  
-      // Initialize the game
-      highlightKey();
-      changeKeysAtTimestamps(); // Call this function to start changing keys
-  </script>
+        let score = 0;
+        const scoreDisplay = document.getElementById('score');
+        const keyHighlight = document.getElementById('keyHighlight');
+        const highlightedKey = document.getElementById('highlightedKey');
+
+        // Initialize keys and the specific key to be pressed
+        let keys = ['A', 'S', 'D','F','G','H','K','L'];
+        let currentKeyIndex = 0;
+        let countdownTimer;
+
+        // Function to update the score
+        function updateScore() {
+            score++;
+            scoreDisplay.textContent = score;
+        }
+
+        // Function to highlight the specific key
+        function highlightKey() {
+            const specificKey = keys[currentKeyIndex];
+            highlightedKey.textContent = specificKey;
+            keyHighlight.classList.add('highlight');
+            startCountdown(); // Start countdown for the next key
+        }
+
+        // Function to start the countdown
+        function startCountdown() {
+            let timeLeft = 1; // 1 second countdown
+            countdownTimer = setInterval(() => {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    currentKeyIndex = (currentKeyIndex + 1) % keys.length; // Move to next key
+                    highlightKey(); // Highlight the next key
+                }
+            }, 1000);
+        }
+
+        // Event listener for key presses
+        document.addEventListener('keydown', (event) => {
+            const specificKey = keys[currentKeyIndex];
+            if (event.key.toUpperCase() === specificKey) {
+                updateScore();
+                const keyButton = document.querySelector(`button:contains(${specificKey})`);
+                if (keyButton) {
+                    keyButton.classList.add('rainbow-active');
+                    setTimeout(() => {
+                        keyButton.classList.remove('rainbow-active');
+                    }, 500); // Duration of the effect
+                }
+                clearInterval(countdownTimer); // Stop the countdown
+                currentKeyIndex = (currentKeyIndex + 1) % keys.length; // Move to next key
+                highlightKey(); // Highlight the next key
+            }
+        });
+
+        // Initialize the game
+        highlightKey(); // Highlight the first key
+    </script>
+    <script src="Script.js"></script>
 </body>
 </html>
