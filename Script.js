@@ -1,10 +1,15 @@
 
 // Define the audio files for key sounds
 const discoSounds = {
-  a: "sounds/a.mp3",
-  s: "sounds/s.mp3",
-  d: "sounds/d.mp3",
-  f: "sounds/f.mp3",
+  a: "assests/A.mp3",
+  s: "assests/B.mp3",
+  d: "assests/Db.mp3",
+  f: "assests/osu-hit-sound.mp3",
+  g: "assests/single_drum_kicks.mp3",
+  h: "assests/single_drum_kicks (1).mp3",
+  j: "assests/crisp_snare.mp3",
+  k: "assests/tom_soun (1).mp3",
+  l: "assests/tom_soun.mp3",
 };
 
 // Play sound based on key press
