@@ -1,41 +1,61 @@
-// Load the background disco music (with gaps)
-const discoBackground = new Audio('assests/Earth, Wind & Fire - September (Official HD Video) (mp3cut.net).mp3');  // Update this path if needed
-discoBackground.loop = true;  // Set the background track to loop
-discoBackground.volume = 0.5;  // Adjust the volume
+// Load background disco music immediately
+const discoBackground = new Audio('assets/bg.mp3');
+discoBackground.loop = true;
+discoBackground.volume = 0.5;
+discoBackground.play();
 
-// Function to start background music on button click
-function startMusic() {
-    discoBackground.play();  // Start playing the background music
-}
-
-// Add an event listener for the button click
-document.getElementById('startButton').addEventListener('click', startMusic);
-
-// Define the audio files for the key sounds
+// Define the audio files for key sounds
 const discoSounds = {
-    'a': 'sounds/a.mp3',  // Sound for key 'a'
-    's': 'sounds/s.mp3',  // Sound for key 's'
-    'd': 'sounds/d.mp3',  // Sound for key 'd'
-    'f': 'sounds/f.mp3'   // Sound for key 'f'
+    'a': 'sounds/a.mp3',
+    's': 'sounds/s.mp3',
+    'd': 'sounds/d.mp3',
+    'f': 'sounds/f.mp3'
 };
 
-// Function to play the sound based on the key pressed
+// Play sound based on key press
 function playSound(key) {
     if (discoSounds[key]) {
-        const audio = new Audio(discoSounds[key]);  // Create an Audio object with the appropriate MP3
-        audio.play();  // Play the sound fragment
-        showKeyPressed(key);  // Display the key pressed
+        const audio = new Audio(discoSounds[key]);
+        audio.play();
     }
 }
 
-// Function to display the key pressed on the screen
+// Display the key pressed on the screen
 function showKeyPressed(key) {
     const keyDisplay = document.getElementById('keyDisplay');
-    keyDisplay.textContent = `Key Pressed: ${key.toUpperCase()}`;  // Update display with the key pressed
+    keyDisplay.textContent = `Key Pressed: ${key.toUpperCase()}`;
 }
 
-// Event listener to detect key presses
+// Apply rainbow effect
+function applyRainbowEffect(onScreenKey) {
+    if (onScreenKey) {
+        onScreenKey.classList.add('rainbow-active');
+
+        // Remove rainbow effect after 1.5s
+        setTimeout(() => {
+            onScreenKey.classList.remove('rainbow-active');
+        }, 1500);
+    }
+}
+
+// Handle keyboard key press
 document.addEventListener("keydown", function(event) {
-    const key = event.key.toLowerCase();  // Get the pressed key and convert to lowercase
-    playSound(key);  // Call playSound function to play the corresponding sound
+    const keyPressed = event.key.toLowerCase();
+    const onScreenKey = [...document.querySelectorAll(".key")].find(el => el.textContent.trim().toLowerCase() === keyPressed);
+
+    if (onScreenKey) {
+        applyRainbowEffect(onScreenKey);
+        playSound(keyPressed);
+        showKeyPressed(keyPressed);
+    }
+});
+
+// Handle mouse click on the on-screen keys
+document.querySelectorAll('.key').forEach(key => {
+    key.addEventListener('click', function () {
+        const keyText = this.textContent.trim().toLowerCase();
+        applyRainbowEffect(this);
+        playSound(keyText);
+        showKeyPressed(keyText);
+    });
 });

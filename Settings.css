@@ -39,12 +39,12 @@ body {
 .key:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute; /* dunnot what it does*/
-    top: -8px; /*alings it behind the button */
-    left:-8px;/*alings it behind the button */
-    background-size: 400%;  /*increased background to make it appear moving*/
-    z-index: -1; /* sends it in the background so that it doesnt appear over the button*/
-    filter: blur(8px); 
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(8px);
     width: calc(110% + 8px);
     height: calc(110% + 8px);
     animation: glowing 20s linear infinite;
@@ -52,39 +52,28 @@ body {
     transition: opacity 0.15s ease-in-out;
     border-radius: 12px;
 }
-.key:active {
-    color: #FFF
-}
 
-.key:active:after {
-    background: transparent;
-}
 .key:hover:before {
     opacity: 1;
 }
-.key:after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #ffffff;
-    left: 0;
-    top: 0;
-    border-radius: 12px;
+
+/* Rainbow effect when a key is pressed */
+.rainbow-active:before {
+    opacity: 1; /* Make sure it's visible */
 }
 
+.rainbow-active {
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+/* Key active state */
+.key:active {
+    color: #FFF;
+}
+
+/* Glowing animation */
 @keyframes glowing {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
-}
-
-
-
-#output {
-    width: 100%;
-    padding: 15px;
-    font-size: 22px;
-    height: 150px;
 }
