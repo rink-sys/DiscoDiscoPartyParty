@@ -1,8 +1,78 @@
 <!DOCTYPE = html>
 <html lang="en">
+  <style>
+    .box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 300px;
+      align-items: center;
+      font-size: 1000%;
+    }
+    .rounded-button {
+      width: 200px;
+      height: 200px;
+      background: #000000;
+      position: absolute;
+      top:400px;
+      left:600px;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;      
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      text-decoration: none;
+    }
+    .rounded-button2 {
+      width: 200px;
+      height: 200px;
+      background: #000000;
+      position: absolute;
+      top:400px;
+      left:900px;
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;      
+      cursor: pointer;
+      border-radius: 50%;
+      border: none;
+      text-decoration: none;
+    }
+    .icon container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      gap: 20px;
+    }
+  </style>
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="start.css" />
-    <button></button>
   </head>
+  <body>
+    <div class="box">Game Over</div>
+    <div class="icon-container">
+      <a class="rounded-button" href="project.html">
+        <ion-icon name="reload-circle-sharp" size="large"></ion-icon>
+      </a>
+      <a class="rounded-button2" href="start.html">
+        <ion-icon name="exit-sharp" size="large"></ion-icon
+      ></a>
+    </div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
 </html>
