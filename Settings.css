@@ -1,23 +1,10 @@
 /* General layout */
-@font-face {
-  font-family: "PeaceBegins";
-  src: url(PeaceBegins-7OjqA.ttf) format("trueType");
-}
-
-h1 {
-  font-family: PeaceBegins;
-  font-weight: bold;
-  color: #ffff;
-  font-size: 1000%;
-  margin-bottom: 30px;
-}
-
 body {
   padding: 15px 30px; /* Padding for the button */
   font-size: 18px; /* Font size for the button text */
   cursor: pointer; /* Change cursor to pointer on hover */
   border: none; /* Remove border */
-  background-color: #000; /* Green background */
+  background-color: #4caf50; /* Green background */
   color: white; /* White text */
   border-radius: 5px; /* Rounded corners */
   transition: background-color 0.3s; /* Smooth transition for hover effect */
@@ -37,9 +24,7 @@ body {
 
 /* Key styling */
 .key {
-  font-size: 28px; /* Larger font size */
-  font-weight: bold; /* Make keys bolder */
-  padding: 20px 30px; /* Larger padding for bigger keys */
+  padding: 20px 20px; /* Larger padding for bigger keys */
 
   margin: 10px; /* More space between keys */
   cursor: pointer;
