@@ -48,7 +48,18 @@ document.addEventListener("keydown", function (event) {
     playSound(keyPressed);
     showKeyPressed(keyPressed);
   }
+
+  
 });
+
+
+const myArray = ["#a414d9", "#ff802b", "#f9e105", "#34c7a5", "#5d50ce"];
+function randomColor(myArray){
+    return myArray[Math.floor(Math.random()*myArray.length)];
+}
+
+
+
 
 // Handle mouse click on the on-screen keys
 document.querySelectorAll(".key").forEach((key) => {
