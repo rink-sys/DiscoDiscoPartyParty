@@ -1,14 +1,14 @@
 // Define the audio files for key sounds
 const discoSounds = {
-  a: "assets/A.mp3",
-  s: "assets/B.mp3",
-  d: "assets/Db.mp3",
-  f: "assets/osu-hit-sound.mp3",
-  g: "assets/single_drum_kicks (1).mp3",
-  h: "assets/single_drum_kicks.mp3",
-  j: "assets/crisp_snare.mp3",
-  k: "assets/tom_soun.mp3",
-  l: "assets/tom_soun (1).mp3",
+  a: "assests/A.mp3",
+  s: "assests/B.mp3",
+  d: "assests/Db.mp3",
+  f: "assests/osu-hit-sound.mp3",
+  g: "assests/single_drum_kicks (1).mp3",
+  h: "assests/single_drum_kicks.mp3",
+  j: "assests/crisp_snare.mp3",
+  k: "assests/tom_soun.mp3",
+  l: "assests/tom_soun (1).mp3",
 };
 
 // Get elements
