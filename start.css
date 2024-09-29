@@ -1,10 +1,20 @@
-
 h1 {
   font-weight: bold;
-  color: #ffff;
-  font-size: 1000%;
+  font-size: 10rem;
   margin-bottom: 30px;
+  background: linear-gradient(90deg, #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00, #ff0000);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: lighting 3s infinite;
 }
+
+@keyframes lighting {
+  0% { background-position: 0%; }
+  50% { background-position: 100%; }
+  100% { background-position: 0%; }
+}
+
 .heading {
   position:absolute; 
   left: 325px; 
@@ -25,6 +35,26 @@ body {
   margin: 128px; /* More space between keys */
   z-index: 0;
   border-radius: 12px;
+}
+/* Disco ball animation */
+.disco-ball {
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #cccccc, #ffffff, #666666);
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: spin 5s infinite linear;
+  box-shadow: 0px 0px 020px 5px rgba(255, 255, 255, 0.5);
+  margin: 0;
+  padding: 0;
+}
+
+@keyframes spin {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  100% { transform: translateX(-50%) rotate(360deg); }
 }
 /* Keyboard layout */
 .keyboard {
@@ -51,4 +81,8 @@ body {
   margin: 10px; /* More space between keys */
   z-index: 0;
   border-radius: 12px;
+}
+
+.key:hover {
+  background-color: #555555;
 }
