@@ -1,79 +1,110 @@
 /* General layout */
+@font-face {
+  font-family: "PeaceBegins";
+  src: url(PeaceBegins-7OjqA.ttf) format("trueType");
+}
+
+h1 {
+  font-family: PeaceBegins;
+  font-weight: bold;
+  color: #ffff;
+  font-size: 1000%;
+  margin-bottom: 30px;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #000000;
+  padding: 15px 30px; /* Padding for the button */
+  font-size: 18px; /* Font size for the button text */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  border: none; /* Remove border */
+  background-color: #000; /* Green background */
+  color: white; /* White text */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
 }
 
 /* Keyboard layout */
 .keyboard {
-    display: inline-block;
-    width: 100%; /* Full width of the container */
+  display: inline-block;
+  width: 100%; /* Full width of the container */
 }
 
 .row {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; /* More space between rows */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* More space between rows */
 }
 
 /* Key styling */
 .key {
-    font-size: 28px; /* Larger font size */
-    font-weight: bold; /* Make keys bolder */
-    padding: 20px 30px; /* Larger padding for bigger keys */
-    margin: 10px; /* More space between keys */
-    cursor: pointer;
-    position: relative;
-    border: none;
-    z-index: 0;
-    text-align: center;
-    width: 80px; /* Increased width for the keys */
-    border-radius: 12px;
-}
+  font-size: 28px; /* Larger font size */
+  font-weight: bold; /* Make keys bolder */
+  padding: 20px 30px; /* Larger padding for bigger keys */
 
+  margin: 10px; /* More space between keys */
+  cursor: pointer;
+  position: relative;
+  border: none;
+  z-index: 0;
+  text-align: center;
+  width: 80px; /* Increased width for the keys */
+  border-radius: 12px;
+}
 .key:before {
-    content: '';
-    background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    background-size: 400%;
-    z-index: -1;
-    filter: blur(8px);
-    width: calc(110% + 8px);
-    height: calc(110% + 8px);
-    animation: glowing 20s linear infinite;
-    opacity: 0;
-    transition: opacity 0.15s ease-in-out;
-    border-radius: 12px;
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(8px);
+  width: calc(110% + 8px);
+  height: calc(110% + 8px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+  border-radius: 12px;
 }
 
 .key:hover:before {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* Rainbow effect when a key is pressed */
 .rainbow-active:before {
-    opacity: 1; /* Make sure it's visible */
+  opacity: 1; /* Make sure it's visible */
 }
 
 .rainbow-active {
-    box-shadow: 0 0 10px #ffcc00;
+  box-shadow: 0 0 10px #ffcc00;
 }
 
 /* Key active state */
 .key:active {
-    color: #FFF;
+  color: #fff;
 }
 
 /* Glowing animation */
 @keyframes glowing {
-    0% { background-position: 0 0; }
-    50% { background-position: 400% 0; }
-    100% { background-position: 0 0; }
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
 }
