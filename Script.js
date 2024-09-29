@@ -117,6 +117,3 @@ music.addEventListener('timeupdate', function() {
   // Update the progress range width based on current time
   progressRange.style.width = (gameprogress / progressremaining * 100) + '%';
 });
-
-// Start the music
-music.play();
