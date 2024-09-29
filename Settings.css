@@ -80,11 +80,17 @@ body {
 
 .progress_slide{
     width:100%;
+    position:absolute;
+    top: 1px;
+    left: 1px;
     background:white;
-    height:25px;
+    height:14px;
+    border-radius: 7px;
 }
 .progress_range{
     width:0;
+    top: 100px;
     background:rgb(13, 255, 0);
-    height:25px;
+    height: 14px;
+    border-radius: 7px;
 }
