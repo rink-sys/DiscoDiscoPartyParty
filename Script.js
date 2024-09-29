@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-// Load background disco music immediately
-const discoBackground = new Audio("assets/bg.mp3");
-discoBackground.loop = true;
-discoBackground.volume = 0.5;
-discoBackground.play();
 
 // Define the audio files for key sounds
 const discoSounds = {
@@ -11,16 +5,6 @@ const discoSounds = {
   s: "sounds/s.mp3",
   d: "sounds/d.mp3",
   f: "sounds/f.mp3",
-=======
-
-
-// Define the audio files for key sounds
-const discoSounds = {
-    'a': 'assests/tom_soun.mp3',
-    's': 'assests/crisp_snare.mp3',
-    'd': 'assests/tom_soun (1).mp3',
-    'f': 'assests/osu-hit-sound.mp3'
->>>>>>> 630d157a00f336a50f8df370ac3e9a812e15d205
 };
 
 // Play sound based on key press
@@ -64,9 +48,9 @@ document.addEventListener("keydown", function (event) {
 });
 
 // Handle mouse click on the on-screen keys
-<<<<<<< HEAD
 document.querySelectorAll(".key").forEach((key) => {
   key.addEventListener("click", function () {
+    music.play();
     const keyText = this.textContent.trim().toLowerCase();
     applyRainbowEffect(this);
     playSound(keyText);
@@ -78,16 +62,6 @@ document.querySelectorAll(".key").forEach((key) => {
   //   if (button.id === "S") {
   //     button.classList.add("large-padding"); // Add class to increase padding
   //   }
-=======
-document.querySelectorAll('.key').forEach(key => {
-    key.addEventListener('click', function () {
-        const keyText = this.textContent.trim().toLowerCase();
-        applyRainbowEffect(this);
-        document.getElementById('music').play();
-        playSound(keyText);
-        showKeyPressed(keyText);
-    });
->>>>>>> 630d157a00f336a50f8df370ac3e9a812e15d205
 });
 
 var music = document.getElementById('music');
