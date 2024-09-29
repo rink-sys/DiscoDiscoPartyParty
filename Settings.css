@@ -79,7 +79,7 @@ body {
     filter: blur(8px);
     width: calc(110% + 8px);
     height: calc(110% + 8px);
-    animation: glowing 2s linear infinite;
+    animation: disco 2s linear infinite;
     opacity: 1;
     transition: opacity 0.15s ease-in-out;
     border-radius: 12px;
@@ -87,6 +87,8 @@ body {
 
 .rainbow-active {
     box-shadow: 0 0 10px #ffcc00;
+    color:white;
+    transform:translate(4px); 
 }
 
 .progress_slide {
